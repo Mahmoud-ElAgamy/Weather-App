@@ -1,0 +1,362 @@
+:root {
+  /* Colors */
+  --font-color: #fff;
+  --background-color: rgba(0, 0, 255, 0.5);
+  --fog-color: darkslategray;
+  --night-color: rgba(204, 0, 102, 0.5);
+  --mask-color: rgba(0, 0, 0, 0.1);
+  --button-color: transparent;
+  --bordercolor: lightgray;
+  --container-bgcolor: #f2f2f2;
+  --button-textcolor: #fff;
+  --shadowcolor: #fff;
+  --text-shadow-color: #000;
+  --fadecolor: rgba(255, 255, 255, 0.6);
+
+  /* Transitions */
+  --main-transition: 0.3s;
+  --alt-transition: 0.6s;
+}
+
+/* Resets */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* General Styles */
+body {
+  font-family: "Oswald", sans-serif;
+  background-color: var(--background-color);
+  background-image: url("../imgs/clouds.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--font-color);
+  letter-spacing: 1px;
+  min-height: 100vh;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  @media (min-width: 768px) {
+    font-size: 1.3rem;
+  }
+}
+
+input,
+button {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Utility Classes */
+.offscreen {
+  position: absolute;
+  left: -10000px;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main Section */
+main {
+  width: 100%;
+  max-width: 700px;
+  max-height: 1050px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: var(--mask-color);
+  border: 1px solid var(--bordercolor);
+  border-radius: 10px;
+  box-shadow: 1px 1px 2.5px var(--shadowcolor);
+  padding: 0.5rem;
+}
+
+/* Search Bar Section */
+.search-bar__form {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid var(--bordercolor);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  transition: var(--main-transition);
+
+  .search-bar__txt {
+    background-color: var(--button-color);
+    color: var(--font-color);
+    padding: 0.5rem;
+    letter-spacing: 2.5px;
+    width: calc(100% - 52px);
+    outline: none;
+    border: none;
+    @media (min-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  .search-bar__txt::placeholder {
+    color: var(--fadecolor);
+  }
+
+  .search-bar__btn {
+    transition: var(--main-transition);
+
+    i {
+      font-size: 1.7rem;
+    }
+  }
+
+  .search-bar__btn:is(:hover, :focus) {
+    border-color: transparent;
+    box-shadow: none;
+    text-shadow: 4px 2px 5px var(--text-shadow-color);
+  }
+}
+
+.search-bar__form:is(:hover, :focus-within) {
+  box-shadow: 4px 2px 5px var(--text-shadow-color);
+}
+
+/* Nav Bar Section */
+.nav-btns {
+  flex-grow: 1;
+  justify-content: space-evenly;
+  /* align-self: flex-end;  */
+  /* margin-top: 15rem; */
+}
+
+/* Forecast Conditions Section */
+.current-forecast {
+  .current-forecast__location {
+    text-align: center;
+    margin: 1rem 0;
+    font-weight: normal;
+    @media (max-width: 767px) {
+      font-size: 1rem;
+    }
+  }
+
+  .current-forecast__conditions {
+    font-size: clamp(1.1rem, 2.9vw, 1.7rem);
+    display: grid;
+
+    .temp {
+      grid-row: 1 / span 3;
+      grid-column: 1 / span 2;
+      font-size: 6rem;
+      text-shadow: 1px 0 5px var(--text-shadow-color);
+      transition: var(--main-transition);
+
+      .unit {
+        color: var(--fadecolor);
+        text-shadow: none;
+        font-size: 1.7rem;
+        transform: translateY(20px);
+      }
+    }
+
+    .icon {
+      grid-row: 1 / span 1;
+      grid-column: 3 / span 2;
+
+      i {
+        text-shadow: 1px 0 5px #fff78a;
+      }
+    }
+
+    .descp,
+    .feels,
+    .humidity,
+    .wind {
+      grid-column: 1 / span 4;
+    }
+
+    .mintemp,
+    .humidity,
+    .wind {
+      color: var(--fadecolor);
+    }
+
+    .mintemp,
+    .maxtemp {
+      grid-column: 3 / span 2;
+    }
+
+    .descp {
+      grid-row: 4 / span 1;
+
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .feels {
+      grid-row: 5 / span 1;
+    }
+
+    .maxtemp {
+      grid-row: 2 / span 1;
+    }
+
+    .mintemp {
+      align-self: self-start;
+      grid-row: 3 / span 1;
+    }
+
+    .humidity {
+      grid-row: 6 / span 1;
+      display: none;
+    }
+
+    .wind {
+      grid-row: 7 / span 1;
+      display: none;
+    }
+
+    .humidity,
+    .wind {
+      @media (min-width: 414px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+/* Daily Forecast Section */
+.daily-forecast {
+  .daily-forecast__content {
+    justify-content: space-evenly;
+
+    .forecast-day {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
+}
+
+hr {
+  width: 90%;
+  margin: 1rem auto;
+  border: 1px solid var(--bordercolor);
+}
+
+/* Components */
+.btn {
+  min-width: 48px;
+  min-height: 48px;
+  color: var(--button-color);
+  border: 2px solid var(--bordercolor);
+  background-color: var(--button-color);
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: var(--main-transition);
+  color: var(--font-color);
+  @media (min-width: 768px) {
+    min-width: 64px;
+    min-height: 64px;
+  }
+}
+
+.btn:is(:hover, :focus) {
+  box-shadow: 4px 2px 5px var(--text-shadow-color);
+  border-color: var(--font-color);
+}
+
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 0;
+  background-color: var(--text-shadow-color);
+  padding: 0.9rem;
+  z-index: 1;
+  color: var(--font-color);
+}
+
+.skip-link:is(:focus, :active) {
+  top: auto;
+  left: auto;
+}
+
+/* Themes */
+.rain,
+.snow,
+.clouds {
+  background-color: var(--background-color);
+}
+
+.night {
+  background-color: var(--night-color);
+  background-image: url("../imgs/night3.jpg");
+}
+
+.fog {
+  background-color: var(--fog-color);
+  background-image: url("../imgs/foggy-weather.jpg");
+}
+
+.rain {
+  background-image: url("../imgs/rainy-weather.jpg");
+}
+
+.snow {
+  background-image: url("../imgs/snow.jpg");
+  background-position: left;
+}
+
+.clouds {
+  background-image: url("../imgs/clouds.jpg");
+}
+
+/* Fadein Animation */
+.zero-vis {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.fadein {
+  visibility: visible;
+  opacity: 1;
+  animation: fadein-opacity 1s 1 ease-in;
+  transform-origin: top center;
+}
+
+/* Animations */
+@keyframes fadein-opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

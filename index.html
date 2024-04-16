@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <!-- Font Awesome Library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- Main JS File -->
+    <script src="js/main.js" type="module"></script>
+  </head>
+  <body class="flex-center">
+    <main class="fadein">
+      <h1 class="offscreen">Weather App powered by the open Weather A P I</h1>
+      <section id="search-bar" class="search-bar fadein">
+        <form
+          id="search-bar__form"
+          class="search-bar__form fadein"
+          role="search"
+        >
+          <label for="search-bar__txt" class="offscreen"
+            >Enter a new location</label
+          >
+          <input
+            id="search-bar__txt"
+            class="search-bar__txt"
+            type="text"
+            role="searchbox"
+            size="40"
+            autocomplete="off"
+            title="Search"
+            placeholder="City, State, or Country"
+            autofocus
+            required
+          />
+          <button
+            type="submit"
+            id="search-bar__btn"
+            class="search-bar__btn btn"
+            title="Submit Location"
+            aria-label="Submit Search"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fas fa-sync fa-spin d-none"></i>
+          </button>
+        </form>
+      </section>
+      <a href="#current-forecast" class="skip-link"
+        >Skip to current conditions</a
+      >
+      <section
+        id="current-forecast"
+        class="current-forecast fadein"
+        role="region"
+        aria-labelledby="Weather location"
+      >
+        <h2 id="current-forecast__location" class="current-forecast__location">
+          Current Conditions
+        </h2>
+        <div
+          id="current-forecast__conditions"
+          class="current-forecast__conditions"
+        ></div>
+      </section>
+
+      <a href="#daily-forecast" class="skip-link">Skip to daily forecast</a>
+      <nav id="nav-btns" class="nav-btns flex-center fadein">
+        <button
+          id="get-location"
+          class="btn"
+          title="Get Location"
+          aria-label="Get the current weather condition for your current location"
+        >
+          <i class="fas fa-map-marker-alt"></i>
+          <i class="fas fa-sync fa-spin d-none"></i>
+        </button>
+
+        <button
+          id="home-weather"
+          class="btn"
+          title="Home Weather"
+          aria-label="Get the current weather condition for your home location"
+        >
+          <i class="fas fa-home"></i>
+          <i class="fas fa-sync fa-spin d-none"></i>
+        </button>
+
+        <button
+          id="save-location"
+          class="btn"
+          title="Save Location"
+          aria-label="Save the current location as your home"
+        >
+          <i class="fas fa-save"></i>
+          <i class="fas fa-sync fa-spin d-none"></i>
+        </button>
+
+        <button
+          id="unit"
+          class="btn"
+          title="Toggle Measurement Units"
+          aria-label="Toggle between metric and imperial measurement units"
+        >
+          <i class="fas fa-chart-bar"></i>
+          <i class="fas fa-sync fa-spin d-none"></i>
+        </button>
+
+        <button
+          id="refresh"
+          class="btn"
+          title="Refresh Weather"
+          aria-label="Refresh the current weather condition"
+        >
+          <i class="fas fa-sync-alt"></i>
+          <i class="fas fa-sync fa-spin d-none"></i>
+        </button>
+      </nav>
+      <hr class="fadein" />
+
+      <section
+        id="daily-forecast"
+        class="daily-forecast fadein"
+        role="region"
+        aria-labelledby="Daily forecast title"
+      >
+        <h2 id="daily-forecast__title" class="daily-forecast__title offscreen">
+          Six Day Forecast
+        </h2>
+        <div
+          id="daily-forecast__content"
+          class="daily-forecast__content flex-center"
+        ></div>
+      </section>
+      <p id="confirmation" class="offscreen" aria-live="assertive"></p>
+    </main>
+  </body>
+</html>
