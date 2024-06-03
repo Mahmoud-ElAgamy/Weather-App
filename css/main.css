@@ -47,16 +47,6 @@ body {
   display: flex;
   justify-content: center;
   -webkit-tap-highlight-color: transparent;
-  position: relative;
-  z-index: 1;
-}
-
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: -1;
 }
 
 @media (min-width: 768px) {
@@ -347,6 +337,16 @@ hr {
 .snow {
   background-image: url("../imgs/snow.jpg");
   background-position: left;
+  position: relative;
+  z-index: 1;
+}
+
+.snow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: -1;
 }
 
 .clouds {
