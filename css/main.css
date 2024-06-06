@@ -181,6 +181,12 @@ main {
   transition: var(--main-transition);
 }
 
+@media (max-width: 767px) {
+  .temp {
+    font-size: 5rem;
+  }
+}
+
 .unit {
   color: var(--fadecolor);
   text-shadow: none;
